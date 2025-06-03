@@ -29,7 +29,9 @@ node {
             "schedule-ocp4-scan",
         ]
         for ( version in commonlib.ocp4Versions ) {
-            cmd << "--version=${version}"
+            if (version != '4.20') {
+                cmd << "--version=${version}"
+            }
         }
 
         withCredentials([
